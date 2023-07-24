@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>3.내장객체</title>
+    </head>
+    <body>
+        <h3>3.내장객체</h3>
+
+        <h4>Array</h4>
+        <script>
+            const arr1 = [1, 2, 3, 4, 5];
+            const arr2 = new Array(6, 7, 8, 9, 10);
+
+            document.write(arr1 + '<br>');
+            document.write(arr2 + '<br>');
+
+            //배열 연결
+            const arr3 = arr1.concat(arr2);
+            document.write(arr3 + '<br>');
+
+            //배열 원소 문자열 생성
+            const result = arr3.join('-');
+            document.write(result + '<br>')
+
+            //배열 반복문
+            arr3.forEach(function (item, index) {
+                document.write(index + ' ' + item + '<br>');
+            });
+
+            arr3.forEach((item, index) => {
+                document.write(index + ' ' + item + '<br>');
+            });
+
+            //배열 원소 가공
+            const arr4 = arr3.map((x) => {
+                return x + 10;
+            });
+
+            arr1.push(7);
+            arr1.push(8);
+            arr1.push(9);
+            const arr5 =arr3.map(item=>item*2);
+            const arr6 = arr3.filter(item=>item%2==0);
+            const arr7 = arr3.map(x=>x*2).filter(x=>x>10);
+
+
+            document.write(arr4 + '<br>');
+            document.write(arr5 + '<br>');
+            document.write(arr6 + '<br>');
+            document.write(arr7 + '<br>');
+            document.write(arr1+ '<br>');
+
+            //배열 구조 분해 할당
+            const[spring,summer,fall,winter] =['봄','여름','가을','겨울'];
+            const[leader, ...others]=['김유신','김춘추','장보고','강감찬','이순신']
+            document.write(spring+' '+summer+' '+fall+' '+winter+'<br>')
+            document.write(leader+'<br>');
+            document.write(others+'<br>');
+        </script>
+
+        <h4>String</h4>
+        <script>
+            const str1 = 'Hello Korea';
+            const str2 = new String('Hello Korea');
+            const str3 = ' ab cd ef ';
+
+            const str4 = '서울,대전,대구,부산,광주';
+
+
+            let r1= str1.length;
+            let r2= str1.charAt(0);
+            let r3 =str1.indexOf('e');
+            let r4 = str1.lastIndexOf('e');
+            let r5 = str2.replace('Korea','Busan');
+            let r6 = str2.substring(2,5);
+            let r7 = str2.substr(2,5);
+            let r8 = str3.trim();
+            let r9 = str4.split(',');
+
+            document.write(r1+"<br>");
+            document.write(r2+"<br>");
+            document.write(r3+"<br>");
+            document.write(r4+"<br>");
+            document.write(r5+"<br>");
+            document.write(r6+"<br>");
+            document.write(r7+"<br>");
+            document.write(r8+"<br>");
+            document.write(r9[0] + '<br>');
+
+        </script>
+
+        <h4>Math</h4>
+        <script>
+            let r21 = Math.abs(-5);
+            let r22 = Math.sqrt(6);
+            let r23 = Math.ceil(1.2);
+            let r24 = Math.ceil(1.8);
+            let r25 = Math.floor(1.2);
+            let r26 = Math.floor(1.8);
+            let r27 = Math.round(1.2);
+            let r28 = Math.round(1.8);
+            let r29 = Math.random()*100;
+
+            document.write(r21 + '<br>');
+            document.write(r22 + '<br>');
+            document.write(r23 + '<br>');
+            document.write(r24 + '<br>');
+            document.write(r25 + '<br>');
+            document.write(r26 + '<br>');
+            document.write(r27 + '<br>');
+            document.write(r28 + '<br>');
+            document.write(r29 + '<br>');
+            let n1 = Math.random();
+            let n2 = n1*10;
+            let n3 = Math.ceil(n2);
+
+            document.write(n3 + '<br>');
+        </script>
+
+        <h4>Date</h4>
+        <script>
+            const date = new Date();
+            document.write(date + '<br>');
+
+            let year = date.getFullYear();
+            let month = date.getMonth()+1;
+            let day = date.getDate();
+            let hour = date.getHours();
+            let min = date.getMinutes();
+            let sec = date.getSeconds();
+
+            //템플릿 문자열
+            document.write(`${year}년 ${month}월 ${day}일 ${hour}:${min}:${sec}`)
+        </script>
+
+    </body>
+</html>

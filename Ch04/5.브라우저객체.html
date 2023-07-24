@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>5.브라우저객체</title>
+    </head>
+    <body>
+
+        <h3>window 객체</h3>
+        <script>
+            //window 객체 - 브라우저 객체, 최상위 객체
+         /*   console.log(window);
+            window.alert('대화상자');
+*/
+            //브라우저 크기
+            window.document.write('innderWidth : '+window.innerWidth+'<br>');
+            window.document.write('innderHeight : '+window.innerHeight+'<br>');
+
+            //새창 띄우기
+         /*   window.open('./1.객체.html','객체예제','width=600 height=500');*/
+
+            //브라우저 저장소
+            window.localStorage.setItem('name','김유신');
+            window.sessionStorage.setItem('name','김춘추');
+
+        </script>
+
+        <h3>screen 객체</h3>
+        <script>
+            console.log(screen);
+            document.write('화면 너비 : '+screen.width+'<br>');
+            document.write('화면 높비 : '+screen.height+'<br>');
+            document.write('화면 너비(작업표시줄 제외) : '+screen.availWidth+'<br>');
+            document.write('화면 높비(작업표시줄 제외) : '+screen.availHeight+'<br>');
+        </script>
+
+        <h3>navigator 객체</h3>
+        <script>
+            //navigator 객체 - 브라우저 정보 객체
+            console.log(navigator);
+
+            document.write('브라우저 코드명 : '+navigator.appCodeName+'<br>');
+            document.write('브라우저 이름 : '+navigator.appName+'<br>');
+            document.write('브라우저 버전 : '+navigator.appVersion+'<br>');
+            document.write('브라우저 플랫폼 : '+navigator.platform+'<br>');
+            document.write('브라우저 정보 : '+navigator.userAgent+'<br>');
+
+        </script>
+
+        <h3>location 객체</h3>
+        <button onclick="f1()">새로고침</button>
+        <button onclick="f2()">네이버 이동</button>
+        <button onclick="f3()">카카오 이동</button>
+        <script>
+            //페이지 새로고침
+            const f1 = () =>location.reload();
+
+            //페이지 이동(주소 히스토리 기록)
+            const f2 = () =>location.href='http://naver.com'; //페이지 이동
+
+            //페이지 이동(주소 히스토리 기록X)
+            const f3 =() =>location.replace('https://daum.net'); //페이지 변경
+        </script>
+
+        <h3>history 객체</h3>
+        <button onclick="p1()">뒤로</button>
+        <button onclick="p2()">앞으로</button>
+        <script>
+            //history 객체 - 브라우저 이력 객체
+            console.log(history);
+
+            document.write('history length : '+history.length+'<br>');
+            const p1 =()=> history.back();
+            const p2 =()=> history.forward();
+
+        </script>
+    </body>
+</html>

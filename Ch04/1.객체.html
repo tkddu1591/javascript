@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>1.객체</title>
+		<script src="js/Account.js"></script>
+	</head>
+	<body>
+		<h3>1.객체</h3>
+		<script>
+			//사용자 정의 객체
+			
+			const sonata = {
+				name: '소나타',
+				color: '흰색',
+				speed: 0,
+				
+				speedUp : function (a){return this.speed+=a},
+				speedDown : function (a) {return  this.speed-=a},
+				show : function (){
+					document.write('차량명 : '+this.name+'<br>');
+					document.write('차량색 : '+this.color+'<br>');
+					document.write('현재속도 : '+this.speed+'<br>');
+				}
+				
+			};
+			sonata.speedUp(80);
+			sonata.speedDown(20);
+			sonata.show();
+			
+			const kb = new Account('kb','101-123-123123-11','김',0);
+			kb.deposit(10000);
+			kb.withdraw(2000);
+			kb.show();
+			const wr = new Account('wr','101-123-123123-11','김',0);
+			wr.deposit(30000);
+			wr.withdraw(8000);
+			wr.show();
+			
+			
+		</script>
+	
+	</body>
+</html>

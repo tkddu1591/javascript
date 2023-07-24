@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>3.이벤트객체</title>
+        <style>
+            #container{
+                width: 600px;
+                height: 300px;
+                border: 1px solid black;
+                box-sizing: border-box;
+            }
+        </style>
+        <script>
+            window.onload = function (){
+
+                //객체 속성
+                const container = document.getElementById('container');
+                const spans = document.getElementsByTagName('span');
+
+                container.addEventListener('mousemove',function (e){
+
+                    spans[0].innerText=e.clientX;
+                    spans[1].innerText=e.clientY;
+                    spans[2].innerText=e.pageX;
+                    spans[3].innerText=e.pageY;
+                    spans[4].innerText=e.screenX;
+                    spans[5].innerText=e.screenY;
+                    spans[6].innerText=e.target;
+                    spans[7].innerText=e.timeStamp;
+                })
+
+                //기본이벤트 해제
+                const a = document.getElementsByTagName('a');
+                const form = document.getElementsByTagName('form')[0];
+
+                a[0].onclick=function (e){
+                    e.preventDefault();
+                    alert('네이버 클릭!');
+                }
+                a[1].addEventListener('click',(e)=>{
+                    alert('다음 클릭!')
+                    e.preventDefault();
+                });
+
+                form.onsubmit= (e) => {
+                    e.preventDefault();
+                    alert('전송시작!');
+                }
+
+            };
+        </script>
+    </head>
+    <body>
+        <h3>3.이벤트 객체</h3>
+        <div id="container">
+
+        </div>
+
+        <p>
+            clienX :<span>0</span><br> <!--창 기준-->
+            clienY :<span>0</span><br>
+            pageX :<span>0</span><br> <!--문서 기준-->
+            pageY :<span>0</span><br>
+            screenX :<span>0</span><br>
+            screenY :<span>0</span><br>
+            target :<span>0</span><br>
+            timeStamp :<span>0</span><br>
+        </p>
+
+        <h4>기본 이벤트 취소</h4>
+        <a href="https://naver.com">네이버</a>
+        <a href="https://daum.net">다음</a>
+
+        <form action="https://google.com">
+            <input type="text" name="value">
+            <input type="submit" name="전송">
+        </form>
+    </body>
+</html>

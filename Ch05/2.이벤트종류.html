@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>2.이벤트 종류</title>
+
+        <style>
+            html {
+                width: 100%;
+                height: 2000px;
+            }
+
+            #content1 > p:nth-child(2) {
+                display: inline-block;
+                position: fixed;
+                right: 30px;
+                top: 30px;
+            }
+
+            .box {
+                display: inline-block;
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+                box-sizing: border-box;
+            }
+
+
+            .innerEvents
+
+        </style>
+        <script>
+            console.log('here1...');
+
+
+            //문서 로딩 이벤트 - HTML 문서 로딩 후 실행
+            window.onload = function () {
+                console.log('here2...');
+
+
+                //스크롤 상단 이동 버튼
+                const btnTop = document.getElementById('btnTop');
+                btnTop.onclick = function () {
+                    window.scrollTo(0, 0);
+                };
+
+                const box = document.getElementsByClassName('box');
+                box[0].addEventListener('click', function () {
+                    this.style.background = 'red';
+                });
+                box[1].addEventListener('mousedown', function () {
+                    this.style.background = 'blue'
+                });
+                box[2].addEventListener('mouseup', function () {
+                    this.style.backgroundColor = 'green'
+                });
+                box[3].addEventListener('mouseover', function () {
+                    this.style.background = 'orange'
+                });
+                box[4].addEventListener('mouseout', function () {
+                    this.style.background = 'yellow'
+                });
+                box[5].addEventListener('mouseover', function () {
+                    this.style.background = 'red'
+                });
+                box[5].addEventListener('mouseout', function () {
+                    this.style.background = 'blue'
+                });
+                box[6].addEventListener('mousemove', function () {
+                    console.log('mouseMove');
+                });
+
+                //키보드 이벤트
+                const inputUesr = document.getElementsByName('user')[0];
+                const inputName = document.getElementsByName('name')[0];
+                const result = document.getElementsByClassName('result');
+
+                inputUesr.addEventListener('keydown', function () {
+                    console.log('keydown...');
+                    let value = this.value
+                    result[0].innerText = value;
+                })
+                inputName.addEventListener('keyup', function () {
+                    console.log('keydown...');
+                    let value = this.value
+                    result[1].innerText = value;
+                })
+
+                //폼 이벤트
+                const form = document.querySelector('#content4>form');
+                const inputUid = document.getElementsByName('uid')[0];
+                const inputPass = document.getElementsByName('pass')[0];
+                const selectAddr = document.getElementsByName('addr')[0];
+                const print = document.getElementsByClassName('print');
+
+                inputUid.addEventListener('focus', function () {
+                    console.log('focus');
+                    print[0].innerText = 'focus!';
+                });
+                inputPass.addEventListener('focusout', function () {
+                    console.log('focusOut');
+                    print[1].innerText = 'focusOut!';
+                });
+                selectAddr.addEventListener('change', function () {
+                    console.log('change');
+                    print[2].innerText = this.value;
+                });
+                form.addEventListener('submit', function () {
+                    console.log('submit');
+                    alert('전송시작!');
+                });
+                //문서 리사이즈 이벤트 - 브라우저 창 크기가 바뀔때 실행
+                window.onresize = function () {
+                    console.log('resize!');
+
+
+                    let w = this.innerWidth;
+                    let h = this.innerHeight;
+                    let size = document.getElementsByClassName('size');
+                    let dap = document.getElementsByClassName('dap');
+
+                    size[0].innerText = w;
+                    size[1].innerText = h;
+
+
+                }
+                // 문서 스크롤 이벤트 - 브라우저 스크롤 이동할 때 실행
+                window.onscroll = function(){
+                    console.log('scroll!');
+
+                    let top = this.scrollY;
+
+                    const content1 = document.getElementById('content1');
+                    const span = content1.getElementsByTagName('span');
+                    span[2].innerText = top;
+                };
+
+            }
+        </script>
+
+    </head>
+    <body>
+        <h3>3.이벤트 종류</h3>
+
+        <h4>문서 이벤트</h4>
+        <div id="content1">
+            <p>
+                가로:<span class="size">0</span><br>
+                세로:<span class="size">0</span><br>
+            </p>
+            <p>
+                위치:<span >0</span><br>
+                <button id="btnTop">상단이동</button>
+            </p>
+        </div>
+
+        <h4>마우스 이벤트</h4>
+        <div id="content2">
+            <div class="box box1">click</div>
+            <div class="box box2">mouseDown</div>
+            <div class="box box3">mouseUp</div>
+            <div class="box box4">mouseOver</div>
+            <div class="box box5">mouserOut</div>
+            <div class="box box6">hover</div>
+            <div class="box box7">mouseMove</div>
+        </div>
+
+        <h4>키보드 이벤트</h4>
+        <div id="content3">
+            <p>
+                <input type="text" name="user">
+                <span class="result"></span>
+            </p>
+            <p>
+                <input type="text" name="name">
+                <span class="result"></span>
+            </p>
+        </div>
+
+        <h4>폼 이벤트</h4>
+        <div id="content4">
+            <form action="#">
+                <p>
+                    <input type="text" name="uid">
+                    <span class="print"></span>
+                </p>
+                <p>
+                    <input type="text" name="pass">
+                    <span class="print"></span>
+                </p>
+                <p>
+                    <select name="addr">
+                        <option>서울</option>
+                        <option>대전</option>
+                        <option>대구</option>
+                        <option>부산</option>
+                        <option>광주</option>
+                    </select>
+                    <span class="print"></span>
+                </p>
+                <input type="submit" value="전송">
+            </form>
+        </div>
+
+    </body>
+</html>
+<script>
+    console.log('here3...')
+</script>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>4.반복문</title>
+	</head>
+	<body>
+		<h3>반복문</h3>
+		<h3>for</h3>
+		<script>
+			//for
+			for (let i = 1; i <= 5; i++) {
+				document.write('i : ' + i + '<br>');
+			}
+			let sum = 0;
+			for (let i = 1; i <= 10; i++) {
+				sum += i;
+			}
+			document.write('sum : ' + sum + '<br>');
+			sum = 0;
+			for (let i = 1; i <= 10; i++) {
+				if (i % 2 == 0) {
+					sum += i;
+				}
+			}
+			document.write('sum : ' + sum + '<br>');
+			
+			
+			for (let i = 1; i <= 10; i++) {
+				for (let j = 0; j < i; j++)
+					document.write('★');
+				document.write('<br>')
+			}
+		
+		</script>
+		<h3>while</h3>
+		<script>
+			//while
+			let total = 0;
+			let k = 1;
+			while (k <= 10) {
+				if (k % 2 == 0)
+					total += k;
+				k++;
+			}
+			document.write(total + '<br>');
+			//do while
+			let tot = 0;
+			let j = 1;
+			do {
+				if (j % 2 == 1)
+					tot += j;
+				j++;
+			} while (j <= 10);
+			document.write(tot + '<br>')
+			let num = 1;
+			while (true) {
+				if (num % 5 == 0 && num % 7 == 0) {
+					break;
+				}
+				num++;
+			}
+			
+			document.write(num + '<br>')
+			
+			//continue
+			
+			tot = 0;
+			for (let i = 1; i <= 10; i++) {
+				if (i % 2 == 1) {
+					continue;
+				}
+				tot += i;
+			}
+			document.write(tot + '<br>');
+		</script>
+		
+		<h4>구구단</h4>
+		<script>
+			
+			document.write('<table border="1">')
+			document.write('<tbody>')
+			document.write('<tr>');
+			for (let i = 2; i < 10; i++) {
+				document.write('<th>' + i + ' 단');
+				document.write('</th>');
+			}
+			document.write('</tr>');
+			for (let i = 1; i < 10; i++) {
+				document.write('<tr>');
+				for (let j = 2; j < 10; j++) {
+					document.write('<td>'+j+' * '+i+' = '+i*j);
+					document.write('</td>');
+				}
+				document.write('</tr>');
+			}
+			document.write('</tbody>')
+			document.write('</table>')
+		</script>
+	
+	</body>
+</html>

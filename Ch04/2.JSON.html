@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>JSON</title>
+	</head>
+	<body>
+		
+		<h3>JSON</h3>
+		<script>
+			//JSON 객체 (메서드 포함 X "키" : "밸류" 형식)
+			const user = {
+				"uid": "a101",
+				"name": "김유신",
+				"hp": "010-2123-1231",
+				"age": 25
+			};
+			document.write(user + '<br>')
+			document.write(user.uid + '<br>')
+			document.write(user.name + '<br>')
+			document.write(user.hp + '<br>')
+			document.write(user.age + '<br>')
+			
+			for (let k in user) {
+				document.write(k + " : " + user[k] + '<br>');
+			}
+			
+			// JSON 객체 배열
+			const jsonData = {
+				"users":
+						[{
+							"uid": "a101",
+							"name": "김유신",
+							"hp": "010-1231-2131",
+							"age": 25
+						}, {
+							"uid": "a102",
+							"name": "강감찬",
+							"hp": "010-1231-2132",
+							"age": 30
+						}, {
+							"uid": "a103",
+							"name": "장보고",
+							"hp": "010-1231-2133",
+							"age": 35
+						}, {
+							"uid": "a104",
+							"name": "김춘추",
+							"hp": "010-1231-2134",
+							"age": 34
+						}, {
+							"uid": "a105",
+							"name": "이순신",
+							"hp": "010-1231-2135",
+							"age": 24
+						}]
+			};
+			for (let user of jsonData.users){
+				document.write('<p>');
+				document.write(user.uid+'<br>');
+				document.write(user.name+'<br>');
+				document.write(user.hp+'<br>');
+				document.write(user.age+'<br>');
+				document.write('</p>');
+			
+			}
+			document.write(jsonData.users[2].hp+'<br>');
+		
+			// JSON 함수
+			const  user1 = {"name":"김유신","age":25,"addr":"김해",};
+			let strUser1 = JSON.stringify(user1); //JSON 객체를 문자열로 변환
+			
+			document.write('user1 : '+strUser1 +'<br>')
+			user2 =JSON.parse(strUser1); //JSON 문자열을 객체로 변환
+			document.write('user1 : '+user2 +'<br>')
+			document.write('<p>');
+			document.write(user2.name+'<br>');
+			document.write(user2.age+'<br>');
+			document.write(user2.addr+'<br>');
+			document.write('</p>');
+		
+		
+		</script>
+	</body>
+</html>

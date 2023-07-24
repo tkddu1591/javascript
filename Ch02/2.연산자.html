@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.연산자</title>
+	<!--
+	20230717
+	김상엽
+	자바스크립트 연산자 실습하기
+	-->
+</head>
+<body>
+	<h3>연산자</h3>
+	<h4>산술연산자</h4>
+	<script>
+		let num1 = 1;
+		let num2 = 2;
+		let num3 = 3;
+		let num4 = 4;
+		
+		let rs1 = num1+num2;
+		let rs2 = num1-num2;
+		let rs3 = num1*num2;
+		let rs4 = num1/num2;
+		let rs5 = num1%num2;
+		document.write('rs : '+ rs1+'<br>');
+		document.write('rs : '+ rs2+'<br>');
+		document.write('rs : '+ rs3+'<br>');
+		document.write('rs : '+ rs4+'<br>');
+		document.write('rs : '+ rs5+'<br>');
+	</script>
+	<h4>복합연산자</h4>
+	<script>
+	
+		let var1=1;
+		let var2=2;
+		let var3=3;
+		let var4=4;
+		
+		var1+=1;
+		var2-=2;
+		var3*=3;
+		var4/=4;
+		document.write('var1 : '+var1+'<br>');
+		document.write('var2 : '+var2+'<br>');
+		document.write('var3 : '+var3+'<br>');
+		document.write('var4 : '+var4+'<br>');
+	</script>
+	<h4>비교연산자</h4>
+	<script>
+		let n1 = 1;
+		let n2 = 2;
+		let n3 = 3;
+		let n4 = 4;
+		
+		let r1=n1>n2;
+		let r2=n1<n2;
+		let r3=n1>=n2;
+		let r4=n1<=n2;
+		let r5=n1==n2;
+		let r6=n1!=n2;
+		
+		document.write('r1 : '+r1+'<br>');
+		document.write('r2 : '+r2+'<br>');
+		document.write('r3 : '+r3+'<br>');
+		document.write('r4 : '+r4+'<br>');
+		document.write('r5 : '+r5+'<br>');
+		document.write('r6 : '+r6+'<br>');
+	</script>
+	<h4>논리연산자</h4>
+	<script>
+		let res1 = n1>1 &&n2>2;
+		let res2 = n1<2 &&n2<3;
+		let res3 = n1>=1 ||n2<1;
+		let res4 = n2>3 ||n3<2;
+		let res5 = !(n3>n4);
+		document.write('<ul>')
+		document.write('<li>')
+		document.write('res1 : '+res1);
+		document.write('</li>')
+		document.write('<li>')
+		document.write('res2 : '+res2);
+		document.write('</li>')
+		document.write('<li>')
+		document.write('res3 : '+res3);
+		document.write('</li>')
+		document.write('<li>')
+		document.write('res4 : '+res4);
+		document.write('</li>')
+		document.write('</ul>')
+		
+	
+	</script>
+	<h4>일치연산자</h4>
+	<script>
+		let num =10;
+		let str = '10';
+		let result1 = (num==str);//값이 같음 :true
+		let result2 = (num===str);//값은 같지만 타입은 다름 :false
+		let result3 = (0 ==false);//값이 같음 :true
+		let result4 = (0===false);//값은 같지만 타입은 다름 :false
+
+		document.write('result1 : '+result1+'<br>');
+		document.write('result2 : '+result2+'<br>');
+		document.write('result3 : '+result3+'<br>');
+		document.write('result4 : '+result4+'<br>');
+	</script>
+	
+
+</body>
+</html>

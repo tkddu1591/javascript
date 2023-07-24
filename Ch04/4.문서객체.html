@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>4.문서객체</title>
+
+        <style>
+            .box {
+                display: inline-block;
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+            }
+
+            .red {
+                background-color: red;
+            }
+
+            .blue {
+                background-color: blue;
+            }
+
+            .green {
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>4.문서객체</h3>
+
+        <ul>
+            <li id="seoul"><span>서울</span>
+                <ol>
+                    <li><i>명동</i></li>
+                    <li><i>종로</i></li>
+                    <li><i>홍대</i></li>
+                    <li><i>이태원</i></li>
+                </ol>
+            </li>
+            <li>대전</li>
+            <li id="daegu">대구</li>
+            <li><span>부산</span>
+                <ol>
+                    <li class="busan">서면</li>
+                    <li class="busan">경대</li>
+                    <li class="busan">해운대</li>
+                </ol>
+            </li>
+            <li>광주</li>
+        </ul>
+
+        <img src="" alt="">
+        <img src="" alt="">
+        <div></div>
+
+        <div class="box1">box1</div>
+        <div class="box2">box2</div>
+
+        <ul id="korea">
+            <li>서울</li>
+            <li>대전</li>
+            <li>대구</li>
+            <li>부산</li>
+            <li>광주</li>
+        </ul>
+
+
+        <p class="content"></p>
+        <p class="content"></p>
+
+        <div class="box ">box1</div>
+        <div class="box green">box2</div>
+        <div class="box ">box3</div>
+
+
+        <script>
+            //문서객체 선택
+            const h3 = document.querySelector('h3');
+            h3.style.color = 'gray';
+
+            const seoul = document.querySelector('#seoul>span');
+            seoul.style.color = 'red';
+            const daejeun = document.querySelector('ul>li:nth-of-type(2)');
+            daejeun.style.color = 'orange';
+
+            const busan = document.querySelector('ul>li:nth-of-type(4)>span');
+            busan.style.color = 'blue';
+
+            const busanCitys = document.querySelectorAll('.busan');
+            busanCitys[1].style.color = 'green';
+
+            const daegu = document.getElementById('daegu');
+            daegu.style.color = 'brown';
+
+            const seoulCitys = document.getElementsByTagName('i');
+            seoulCitys[1].style.color = 'red';
+
+            for (let city of seoulCitys) {
+                city.style.color = 'violet';
+            }
+
+            const busanCities = document.getElementsByClassName('busan');
+            for (let city of busanCities) {
+                city.style.background = 'yellow';
+            }
+
+        </script>
+
+        <h4>문서객체 조작</h4>
+
+        <script>
+            //속성 조작
+
+            /*  const img = document.querySelector('img');
+              img.src="../images/flower1.jpg";
+              img.alt="벚꽃";
+
+              const img2 = document.querySelector('img:nth-of-type(2)')
+              img2.src="../images/flower2.jpg";
+              img2.alt="벚꽃";*/
+
+            const imgs = document.querySelectorAll('img')
+            imgs[0].src = "../images/flower1.jpg";
+            imgs[0].alt = "벚꽃";
+            imgs[1].src = "../images/flower2.jpg";
+            imgs[1].alt = "코스모스";
+
+            //스타일 조작
+            const box1 = document.querySelector('.box1');
+            box1.style.display = 'inline-block'
+            box1.style.width = '100px';
+            box1.style.height = '100px';
+            box1.style.border = '1px solid black';
+            box1.style.background = 'orange';
+
+            const box2 = document.getElementsByClassName('box2');
+            box2[0].style.display = 'inline-block'
+            box2[0].style.width = '100px';
+            box2[0].style.height = '100px';
+            box2[0].style.border = '1px solid black';
+            box2[0].style.backgroundColor = 'green';
+
+            //내용 조작
+            const korea = document.querySelector('#korea');
+            let text = korea.innerText;  //태그 내용의 텍스트 요소만 추출
+            let html = korea.innerHTML; //태그 내용의 태그 요소와 텍스트 요소 추출
+            console.log(text + html);
+            document.write(text + '<br>' + html);
+
+            const contents = document.querySelectorAll('.content');
+            contents[0].innerText = '<em>TEXT 내용입니다.</em>' //문자열 태그 포함 모두 텍스트 요소로 추가
+            contents[1].innerHTML = '<em>HTML 내용입니다.</em>'//문자열 태그는 태그요소로 텍스트는 텍스트 요소로 추가
+
+            const boxs = document.getElementsByClassName('box');
+            boxs[0].classList.add('red');       // 추가
+            boxs[1].classList.remove('green');  // 삭제
+            boxs[2].classList.toggle('blue');   //on off 형식 딸깍딸깍임.
+        </script>
+
+        <h4>문서객체 추가/이동</h4>
+        <ul class="city">
+            <li><em>경기도</em>
+                <ol></ol>
+            </li>
+            <li><em>충청도</em>
+                <ol></ol>
+            </li>
+            <li><em>강원도</em>
+                <ol></ol>
+            </li>
+            <li>
+                <em>경상도</em>
+                <ol>
+                    <li>창원</li>
+                    <li>수원</li>
+                    <li>목포</li>
+                    <li>부여</li>
+                    <li>원주</li>
+                    <li>파주</li>
+                </ol>
+            </li>
+            <li><em>전라도</em>
+                <ol></ol>
+            </li>
+        </ul>
+
+        <script>
+            const gyeonggi = document.querySelector('.city>li:nth-of-type(1)>ol')
+            const choungchung = document.querySelector('.city>li:nth-of-type(2)>ol')
+            const gangwon = document.querySelector('.city>li:nth-of-type(3)>ol')
+            const gyeongsang = document.querySelector('.city>li:nth-of-type(4)>ol')
+            const jeonlla = document.querySelector('.city>li:nth-of-type(5)>ol')
+
+            gyeonggi.insertAdjacentHTML("beforeend", '<li>평택</li>');
+            gyeonggi.insertAdjacentHTML("beforeend", '<li>용인</li>');
+            gyeonggi.insertAdjacentHTML("afterbegin", '<li>성남</li>');
+            gyeonggi.insertAdjacentHTML("afterbegin", '<li>화성</li>');
+
+            choungchung.insertAdjacentHTML("beforeend", '<li>단양</li>');
+
+            gangwon.insertAdjacentHTML("beforeend", '<li>춘천</li>');
+
+            jeonlla.insertAdjacentHTML("beforeend", '<li>담양</li>');
+
+
+            const nodes = gyeongsang.getElementsByTagName('li');
+
+            const suwon = nodes[1];
+            const mokfo = nodes[2];
+            const buyeo = nodes[3];
+            const wonju = nodes[4];
+            const pajoo = nodes[5];
+
+            gyeonggi.append(suwon);
+            gyeonggi.prepend(pajoo);
+            jeonlla.append(mokfo);
+            choungchung.prepend(buyeo);
+            gangwon.append(wonju);
+
+
+        </script>
+
+        <h4>문서객체 생성/ 삭제</h4>
+        <section>
+            <h5>삭제할 예정입니다.</h5>
+        </section>
+        <script>
+            const section = document.getElementsByTagName('section')[0];
+
+            const pNode = document.createElement('p');
+            pNode.id='txt';
+            pNode.innerText='동적으로 생성한 문단태그 p 입니다.'
+            section.appendChild(pNode);
+
+            const imgNode1 = document.createElement('img');
+            imgNode1.classList.add('img1');
+            imgNode1.setAttribute('src','./images/flower1.jpg');
+            imgNode1.setAttribute('alt','벚꽃');
+            section.appendChild(imgNode1);
+
+            const imgNode2 = document.createElement('img');
+            imgNode1.classList.add('img2');
+            imgNode2.setAttribute('src','./images/flower2.jpg');
+            imgNode2.setAttribute('alt','벚꽃');
+            section.insertBefore(imgNode2,imgNode1);
+
+            const h5 = document.querySelector('h5');
+            h5.remove();
+        </script>
+    </body>
+</html>
