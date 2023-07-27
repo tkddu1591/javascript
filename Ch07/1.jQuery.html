@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>1.jQuery소개</title>
+        <!--
+        2023/07/26 김상엽
+        자바스크립트 jQuery 실습
+        -->
+        <script>
+            window.onload = () => {
+                //javascript 처리
+                const city = document.getElementById('city');
+                const li = city.getElementsByTagName('li');
+                li[0].style.color = 'red';
+
+                //jQuery 처리
+                $(document).ready(() => {
+                    $('#city>li:last-child').css('color', 'green');
+                });
+
+            }
+        </script>
+        <script src="js/jquery-3.7.0.min.js"></script>
+    </head>
+    <body>
+        <h3>1.jQuery 소개</h3>
+
+        <ul id="city">
+            <li>서울</li>
+            <li>대전</li>
+            <li>대구</li>
+            <li>부산</li>
+            <li>광주</li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>3.AJAX</title>
+        <!--
+        2023/07/25
+        AJAX 실습
+        -->
+        <script>
+            window.onload = function () {
+
+                const btnData = document.getElementById('btnData');
+                btnData.addEventListener('click', () => {
+                    //AJAX 데이터 요청
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', 'http://chhak.click/data/user.json');
+                    xhr.send();
+
+                    //응답처리 핸들러
+                    xhr.onreadystatechange = function () {
+
+                        if (xhr.readyState == XMLHttpRequest.DONE) {
+
+                            if (xhr.status == 200) {
+                                const data = JSON.parse(xhr.response);
+
+
+                                const span = document.getElementsByTagName('span');
+                                span[0].innerText = data.uid;
+                                span[1].innerText = data.name;
+                                span[2].innerText = data.hp;
+                                span[3].innerText = data.age;
+                            } else
+                                console.log('요청실패....');
+
+                        }
+
+                    }
+
+                });
+                const a = document.getElementById('usersData');
+
+                a.onclick = function (e) {
+                    e.preventDefault();
+                    //AJAX 데이터 요청
+
+                    fetch('http://chhak.click/data/users.json')
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log(data);
+                            const table = document.getElementsByTagName('table')[0];
+                            for(let user of data.users){
+                                const tr = document.createElement('tr');
+                                const td1 = document.createElement('td');
+                                const td2 = document.createElement('td');
+                                const td3 = document.createElement('td');
+                                const td4 = document.createElement('td');
+                                td1.innerText = user.uid;
+                                td2.innerText = user.name;
+                                td3.innerText = user.hp;
+                                td4.innerText = user.age;
+
+                                tr.appendChild(td1);
+                                tr.appendChild(td2);
+                                tr.appendChild(td3);
+                                tr.appendChild(td4);
+
+                                table.appendChild(tr);
+                            }
+                        })
+                        .catch(() =>
+                            console.log('요청실패...'))
+
+
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <h3>AJAX</h3>
+        <button id="btnData">데이터 요청</button>
+        <p>
+            아이디 : <span></span><br>
+            이름 : <span></span><br>
+            휴대폰 : <span></span><br>
+            나이 : <span></span><br>
+        </p>
+
+        <a href="#" id="usersData">users 데이터 요청</a>
+
+        <table border="1" id="userTable">
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>휴대폰</th>
+                <th>나이</th>
+            </tr>
+        </table>
+
+
+    </body>
+</html>

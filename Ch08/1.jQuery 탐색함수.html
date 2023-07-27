@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1.jQuery 탐색 함수</title>
+    <!--
+    2023/07/27
+    jQuery 탐색 함수
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(()=>{
+            //jQuery()
+            const tags = $('ul > li');
+            console.log(tags.length);
+
+            //eq()
+            tags.eq(1).css('color','red');
+            tags.eq(2).css('color','#0f0');
+
+            //first(), last()
+            tags.first().css('color','grey')
+            tags.last().css('color','green')
+
+            //slice()
+            tags.slice(1,3).css('background-color','yellow')
+
+            //each()
+            tags.each(function (){
+                $(this).css('border','1px solid black')
+            })
+
+            //children()
+            tags.eq(4).children().css('border','1px solid red');
+
+
+            //next() prev()
+            tags.first().next().next().next().css('color','orange');
+            tags.last().prev().prev().css('background','pink')
+
+            //find()
+            tags.find('.seomyun').css('color','blue');
+            //parent()
+            tags.find('.seomyun').parent().prev().css('background','aqua')
+        });
+    </script>
+</head>
+<body>
+    <h3>1.jQuery 탐색 함수</h3>
+    <ul>
+        <li id="seoul">서울</li>
+        <li>대전</li>
+        <li>대구</li>
+        <li>울산</li>
+        <li><span>부산</span>
+            <ol>
+                <li class="seomyun">서면</li>
+                <li>경성대</li>
+                <li>해운대</li>
+                <li>남포동</li>
+            </ol>
+        </li>
+        <li class="gwangju">광주</li>
+    </ul>
+
+
+</body>
+</html>

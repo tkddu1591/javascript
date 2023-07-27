@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>비동기처리</title>
+        <!--
+            2023/07/25
+            Javascript 비동기 처리방식 실습
+        -->
+    </head>
+
+    <body>
+        <h3>2.프로미스 객체</h3>
+        <script>
+            //promise 기본
+            let result = true;
+            const promise1 = new Promise((resolve, reject) => {
+                if (result) {
+                    resolve('promise1 fulfilled....');
+                } else {
+                    reject('promise1 reject');
+                }
+            });
+            console.log(promise1);
+            //then 성공시, catch 실패시, finally 마지막 무조건 실행
+            promise1.then((msg) => {
+                console.log(msg)
+            })
+                .catch((msg) => {
+                    console.log(msg)
+                })
+                .finally(() => {
+                    console.log('promise1 end....');
+                });
+
+            //promise를 이용한 비동기 방식 처리
+            async function stpe1() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve('step1');
+                    }, 1000)
+                });
+            }
+
+            async function stpe2(msg) {
+                console.log(msg);
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve('step2');
+                    }, 2000)
+                });
+            }
+
+            async function stpe3(msg) {
+                console.log(msg);
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve('step3');
+                    }, 3000)
+                });
+            }
+
+
+            stpe1()
+                .then((msg) => stpe2(msg))
+                .then((msg) => stpe3(msg))
+                .then((msg) => {
+                    console.log(msg)
+                });
+
+            //async/await 구문을 활용한 비동기 처리
+
+            async function start() {
+                const result1 = await stpe1();
+                const result2 = await stpe2(result1);
+                const result3 = await stpe3(result2);
+                console.log(result3);
+            }
+
+            setTimeout(() => {
+                start();
+            }, 7000);
+
+        </script>
+    </body>
+</html>

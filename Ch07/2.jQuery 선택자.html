@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>2.jQuery 선택자</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script>
+            window.onload = (() => {
+                $(document).ready(() => {
+                    //전체선택자
+                    $('*').css('color', 'blue');
+                    //태그선택자
+                    $('h3').css('color', 'violet');
+                    //클래스선택자
+                    $('.gwangju').css('color', 'green');
+                    //아이디선택자
+                    $('#seoul').css('color', 'gray');
+                    //자손선택자
+                    $('ul>li').css('color', 'green')
+                    //구조선택자
+                    $('body>ul>li:nth-of-type(3)').css('color', 'red')
+                    $('ul>li:eq(3)').css('color', 'brown')
+                    //속성선택자
+                    $('input[name=uid]').css('background', 'skyblue')
+                    $('input[name=name]').css('background', 'lime')
+                    //셀프선택자
+                    $('ol>li').each(function (){
+                        $(this).css('border','1px dotted black')
+                    });
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <h3>jQuery 선택자</h3>
+
+        <ul>
+            <li id="seoul">서울</li>
+            <li>대전</li>
+            <li>대구</li>
+            <li>울산</li>
+            <li><span>부산</span>
+                <ol>
+                    <li>서면</li>
+                    <li>경성대</li>
+                    <li>해운대</li>
+                    <li>남포동</li>
+                </ol>
+            </li>
+            <li class="gwangju">광주</li>
+        </ul>
+        <input type="text" name="uid">
+        <input type="text" name="name">
+    </body>
+</html>
