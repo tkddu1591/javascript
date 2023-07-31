@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>4.애니메이션 함수</title>
+        <style>
+            section {
+                width: 100%;
+                height: 220px;
+                position: relative;
+            }
+
+            .box {
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                border: 1px solid blue;
+                box-sizing: border-box;
+                background-color: orange;
+            }
+
+            .box1 {
+                left: 0;
+                top: 10px;
+            }
+
+            .box2 {
+                left: 210px;
+                top: 10px;
+            }
+
+            .box3 {
+                left: 420px;
+                top: 10px;
+            }
+
+            .container {
+                width: 800px;
+                height: 400px;
+                border: 1px solid black;
+                position: relative;
+            }
+
+            .container > div {
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+                box-sizing: border-box;
+                background-color: green;
+                position: absolute;
+            }
+
+            .container > div:nth-of-type(1) {
+                left: 0;
+                top: 0;
+            }
+
+            .container > div:nth-of-type(2) {
+                left: 0;
+                top: 100px;
+            }
+
+            .container > div:nth-of-type(3) {
+                left: 0;
+                top: 200px;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script>
+            $(function () {
+
+                const buttons = $('button');
+
+                buttons.eq(0).click(function () {
+                    $('.box1').animate({
+                        'width': '200px',
+                        'height': '200px',
+                        'opacity': '1'
+                    }, 1000)
+                })
+                buttons.eq(1).click(function () {
+                    $('.box1').animate({
+                        'width': '0px',
+                        'height': '0px',
+                        'opacity': '0'
+                    }, 1000)
+                })
+                buttons.eq(2).click(function () {
+                    $('.box2').fadeIn();
+                })
+                buttons.eq(3).click(function () {
+                    $('.box2').fadeOut();
+                })
+                buttons.eq(5).click(function () {
+                    $('.box3').slideUp();
+                })
+                buttons.eq(4).click(function () {
+                    $('.box3').slideDown();
+                })
+
+
+                //box 이동 애니메이션
+                $('.container> div:eq(0)').click(function () {
+                    $(this).animate({'left': '700px'}, 1000)
+                });
+                $('.container> div:eq(1)').click(function () {
+
+                    $(this).animate({'left': '700px'}, 1000)
+                        .animate({'left': '0px'}, 1000)
+                })
+                $('.container> div:eq(2)').click(function () {
+                    $(this).animate({'top': '300px'}, 1000)
+                        .animate({'left': '700px'}, 1000)
+                        .animate({'top': '200px'}, 1000)
+                        .animate({'left': '0px'}, 1000)
+                })
+
+
+
+                //애니메이션 단축함수
+                $('a').click(function (e) {
+                    e.preventDefault();
+                    let idx = $(this).index();
+                    if(idx ===0){
+                        $('.content>.box1').show(200);
+                    }
+                    if(idx ===1){
+                        $('.content>.box1').hide(200);
+                    }
+                    if(idx ===2){
+                        $('.content>.box1').toggle(200);
+                    }
+                    if(idx ===3){
+                        $('.content>.box2').fadeIn(200);
+                    }
+                    if(idx ===4){
+                        $('.content>.box2').fadeOut(200);
+                    }
+                    if(idx ===5){
+                        $('.content>.box2').fadeToggle(200);
+                    }
+                    if(idx ===6){
+                        $('.content>.box3').slideDown(200);
+                    }
+                    if(idx ===7){
+                        $('.content>.box3').slideUp(200);
+                    }
+                    if(idx ===8){
+                        $('.content>.box3').slideToggle(200);
+                    }
+                })
+
+
+            })
+        </script>
+    </head>
+    <body>
+        <h3>애니메이션 함수</h3>
+
+        <h4>기본 애니메이션</h4>
+        <div>
+            <button>show</button>
+            <button>hide</button>
+            <button>fadeIn</button>
+            <button>fadeOut</button>
+            <button>slideDown</button>
+            <button>slideUp</button>
+        </div>
+        <section>
+            <article class="box box1"></article>
+            <article class="box box2"></article>
+            <article class="box box3"></article>
+        </section>
+
+        <h4>이동 애니메이션</h4>
+
+        <div class="container">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+        <h4>단축 애니메이션</h4>
+        <div>
+            <a href="#">show</a>
+            <a href="#">hide</a>
+            <a href="#">toggle</a>
+            <a href="#">fadeIn</a>
+            <a href="#">fadeOut</a>
+            <a href="#">fadeToggle</a>
+            <a href="#">slideDown</a>
+            <a href="#">slideUp</a>
+            <a href="#">slideToggle</a>
+        </div>
+        <section class="content">
+            <article class="box box1"></article>
+            <article class="box box2"></article>
+            <article class="box box3"></article>
+        </section>
+
+        <h4>슬라이드 배너 애니메이션</h4>
+        <style>
+            ul{
+                width: 280px;
+                height: 390px;
+                list-style: none;
+                padding: 0;
+                position: relative;
+                overflow: hidden;
+            }
+            ul>li{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+            ul>li:nth-of-type(1){left: 0;top: 0;}
+            ul>li:nth-of-type(2){left: 100%;top: 0%;}
+            ul>li:nth-of-type(3){left: 200%;top: 0%;}
+
+        </style>
+        <ul>
+            <li><img src="images/1.jpg" alt="1"></li>
+            <li><img src="images/2.jpg" alt="2"></li>
+            <li><img src="images/3.jpg" alt="3"></li>
+        </ul>
+        <script>
+            const sliders = $('ul>li');
+
+            let i=0;
+            setInterval(function (){
+                $(sliders.eq(i)).animate({
+                    'left':'-100%'
+                },2000)
+                i++
+                if(i==3)
+                    i=0;
+                $(sliders.eq(i)).css('left','100%').animate({
+                    'left':'0%'
+                },2000)
+
+
+            },3000)
+
+        </script>
+
+
+
+    </body>
+</html>
